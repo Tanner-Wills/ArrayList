@@ -125,6 +125,7 @@ public class ArrayList<T> {
             // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
             this.backingArray[size] = null;
             size -= 1;
+            return (T) this.backingArray;
         }
 
         /**
