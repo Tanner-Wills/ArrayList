@@ -108,7 +108,7 @@ public class ArrayList<T> {
                 tempArrayRemoveFront[i] = this.backingArray[i+1];
             }
             this.backingArray = tempArrayRemoveFront;
-            return (T) this.backingArray;
+            return //data located at front of the list;
         }
 
         /**

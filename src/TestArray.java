@@ -10,8 +10,12 @@ public class TestArray {
 
         System.out.println(TestyTime.size());
         TestyTime.addToBack(1);
+        TestyTime.addToBack(4);
+        TestyTime.addToFront(5);
+        TestyTime.removeFromFront();
+        TestyTime.removeFromBack();
 
-        System.out.println(Arrays.toString(new ArrayList[]{TestyTime}));
+
 
 
     }
