@@ -45,8 +45,20 @@ public class ArrayList<T> {
         if (data == null) {
             throw new IllegalArgumentException("Can't add null to a list!");
         } else {
-            size += 1;
-            backingArray[size] = data;
+            //resize array if needed
+            if(size + 1 > this.backingArray.length){
+                T[] tempArrayAddFront = (T[]) new Object[this.backingArray.length * 2];
+                //copy all elements of the old array
+                for(int i = 0; i < this.size; i ++){
+                    tempArrayAddFront[i] = this.backingArray[i];
+                }
+                this.backingArray = tempArrayAddFront;
+            }
+            this.size += 1;
+            for(int index = size; index > 0; index --){
+                this.backingArray[index] = this.backingArray[index-1];
+            }
+            this.backingArray[0] = data;
         }
     }
 
@@ -63,12 +75,19 @@ public class ArrayList<T> {
         if (data == null) {
             throw new IllegalArgumentException("Can't add null to a list!");
         } else {
-            if(size +1 > INITIAL_CAPACITY){
-
+            //resize array if needed
+            if (size + 1 > this.backingArray.length) {
+                T[] tempArrayAddBack = (T[]) new Object[this.backingArray.length * 2];
+                //copy all elements of the old array
+                for (int i = 0; i < this.size; i++) {
+                    tempArrayAddBack[i] = this.backingArray[i];
+                }
+                this.backingArray = tempArrayAddBack;
             }
-            size += 1;
-            backingArray[size] = data;
+            this.size += 1;
+            this.backingArray[size] = data;
         }
+    }
 
         /**
          * Removes and returns the first data of the list.
@@ -84,6 +103,12 @@ public class ArrayList<T> {
          */
         public T removeFromFront () {
             // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+            T[] tempArrayRemoveFront = (T[]) new Object[this.backingArray.length];
+            for(int i = 0; i < this.size-1; i ++){
+                tempArrayRemoveFront[i] = this.backingArray[i+1];
+            }
+            this.backingArray = tempArrayRemoveFront;
+            return (T) this.backingArray;
         }
 
         /**
@@ -98,6 +123,8 @@ public class ArrayList<T> {
          */
         public T removeFromBack () {
             // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+            this.backingArray[size] = null;
+            size -= 1;
         }
 
         /**
@@ -125,5 +152,5 @@ public class ArrayList<T> {
             // DO NOT MODIFY THIS METHOD!
             return size;
         }
+
     }
-}
