@@ -19,7 +19,6 @@ public class ArrayList<T> {
      * so instead we cast an Object[] to a T[] to get the generic typing.
      */
     public ArrayList() {
-        //DO NOT MODIFY THIS METHOD!
         backingArray = (T[]) new Object[INITIAL_CAPACITY];
     }
 
@@ -27,8 +26,7 @@ public class ArrayList<T> {
      * Adds the data to the front of the list.
      */
     public void addToFront(T data) {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-        //Recursive functions call themselves
+        //Consider recursive functions call themselves
         if (data == null) {
             throw new IllegalArgumentException("Can't add null to a list!");
         } else {
@@ -54,7 +52,6 @@ public class ArrayList<T> {
      * Adds the data to the back of the list.
      */
     public void addToBack(T data) {
-        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
         if (data == null) {
             throw new IllegalArgumentException("Can't add null to a list!");
         } else {
@@ -78,7 +75,6 @@ public class ArrayList<T> {
          * @return the data formerly located at the front of the list
          */
         public T removeFromFront () {
-            // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
             if(this.size == 0){
                 throw new IllegalArgumentException("This list is empty!");
             }
@@ -97,7 +93,6 @@ public class ArrayList<T> {
          * @return the data formerly located at the back of the list
          */
         public T removeFromBack () {
-            // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
             if(this.size == 0){
                 throw new IllegalArgumentException("The list is empty!");
             }
@@ -111,7 +106,6 @@ public class ArrayList<T> {
          * @return the backing array of the list
          */
         public T[] getBackingArray () {
-            // DO NOT MODIFY THIS METHOD!
             return backingArray;
         }
 
@@ -119,7 +113,6 @@ public class ArrayList<T> {
          * @return the size of the list
          */
         public int size(){
-            // DO NOT MODIFY THIS METHOD!
             return size;
         }
         public T get(int i){
