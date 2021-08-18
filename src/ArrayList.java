@@ -50,15 +50,16 @@ public class ArrayList<T> {
                 T[] tempArrayAddFront = (T[]) new Object[this.backingArray.length * 2];
                 //copy all elements of the old array
                 for(int i = 0; i < this.size; i ++){
-                    tempArrayAddFront[i] = this.backingArray[i];
+                    tempArrayAddFront[i+1] = this.backingArray[i];
                 }
                 this.backingArray = tempArrayAddFront;
-            }
-            this.size += 1;
-            for(int index = size; index > 0; index --){
-                this.backingArray[index] = this.backingArray[index-1];
+            } else {
+                for (int index = size; index > 0; index--) {
+                    this.backingArray[index] = this.backingArray[index - 1];
+                }
             }
             this.backingArray[0] = data;
+            this.size += 1;
         }
     }
 
@@ -84,8 +85,8 @@ public class ArrayList<T> {
                 }
                 this.backingArray = tempArrayAddBack;
             }
-            this.size += 1;
             this.backingArray[size] = data;
+            this.size += 1;
         }
     }
 
@@ -103,12 +104,16 @@ public class ArrayList<T> {
          */
         public T removeFromFront () {
             // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-            T[] tempArrayRemoveFront = (T[]) new Object[this.backingArray.length];
-            for(int i = 0; i < this.size-1; i ++){
-                tempArrayRemoveFront[i] = this.backingArray[i+1];
+            if(this.size == 0){
+                throw new IllegalArgumentException("This list is empty!");
             }
-            this.backingArray = tempArrayRemoveFront;
-            return //data located at front of the list;
+            T frontStore = backingArray[0];
+            for(int i = 0; i < this.size; i ++){
+                this.backingArray[i] = this.backingArray[i+1];
+            }
+            this.backingArray[size-1] = null;
+            this.size -=1;
+            return frontStore;
         }
 
         /**
@@ -152,6 +157,9 @@ public class ArrayList<T> {
         public int size(){
             // DO NOT MODIFY THIS METHOD!
             return size;
+        }
+        public T get(int i){
+            return backingArray[i];
         }
 
     }
